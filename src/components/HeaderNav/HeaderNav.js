@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import SimpleModal from '../EditUser/EditUser';
+import SettingModal from '../Settings/Settings'
 
 const useStyles = makeStyles (() => ({
     toolbarMenu: {
@@ -45,8 +47,9 @@ const HeaderNav = () => {
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>Settings</MenuItem>
-                        <MenuItem onClick={handleClose}>Edit User</MenuItem>
+                        <MenuItem onClick={handleClose}><SettingModal></SettingModal></MenuItem>
+                        <MenuItem onClick={handleClose}><SimpleModal></SimpleModal></MenuItem>
+                        
                     </Menu>
                     <Button variant="contained" color="primary">
                         Logout
