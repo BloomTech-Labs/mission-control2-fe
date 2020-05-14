@@ -14,14 +14,14 @@ const AppWithRouterAccess = () => {
     //makes it required to have authorization
     //then routing. could be condensed if needed and just shoved in app.js TBH.
     return (
-        <Security issuer='https://dev-173777.okta.missionctrl.dev/oauth2/default'
-            clientId='0oa1xupf0qVAcU18v357'
+        <Security issuer='https://dev-955052.okta.com/oauth2/default'
+            clientId='0oabxhxxeiHbyU0C54x6'
             redirectUri={window.location.origin + '/implicit/callback'}
             onAuthRequired={onAuthRequired}
             pkce={true} >
             <Route path='/' exact={true} component={Home} />
             <SecureRoute path='/protected' component={Protected} />
-            <Route path='/login' render={() => <Login issuer='https://dev-173777.okta.com/oauth2/default' />} />
+            <Route path='/login' render={() => <Login issuer='https://dev-955052.okta.com/oauth2/default' />} />
             <Route path='/implicit/callback' component={LoginCallback} />
         </Security>
     );
