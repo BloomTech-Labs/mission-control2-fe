@@ -11,6 +11,7 @@ const Login = ({ issuer }) => {
     }
     //just pulls up form. could be condensed if needed so it isnt too dry.
     return authState.isAuthenticated ?
+    
         <Redirect to={{ pathname: '/' }} /> :
         <Form issuer={issuer} />;
 };
