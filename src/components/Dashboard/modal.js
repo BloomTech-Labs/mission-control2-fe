@@ -65,7 +65,7 @@ export default function SimpleModal() {
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Open Modal
+        Edit User
       </button>
       <Modal
         open={open}
