@@ -47,8 +47,10 @@ const HeaderNav = () => {
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>Settings</MenuItem>
                         <MenuItem onClick={handleClose}>Edit User</MenuItem>
-                        <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Menu>
+                    <Button variant="contained" color="primary">
+                        Logout
+                        </Button>
                     </div>
             </Toolbar>
         </AppBar>
