@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderNav from '../HeaderNav/HeaderNav';
+import ProgramList from '../ProgramList/ProgramList';
 import { Grid } from '@material-ui/core';
 
 function Dash() {
@@ -8,9 +9,11 @@ function Dash() {
            <Grid item >
                <HeaderNav/>
                </Grid>
-           <Grid item container >Project List</Grid>
+           <Grid item container>
+               <ProgramList/>
+               </Grid>
        </Grid>
     )
-}
+};
 
 export default Dash;
