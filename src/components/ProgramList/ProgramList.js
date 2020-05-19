@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ProgramAdd from './ProgramAdd';
 import ProgramCard from './ProgramCard';
+
 
 const ProgramList = () => {
     const [data, setData] = useState([])
@@ -11,10 +13,11 @@ const ProgramList = () => {
                 setData(res.data)
             })
             .catch(err => { console.error('Axios error', err) });
-    }, [])
+    }, [data])
 
     return (
         <div>
+            <ProgramAdd s />
             {data.map((data) => {
                 return <ProgramCard data={data} id={data.id} name={data.name} />;
             })}

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import axios from 'axios';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -28,11 +30,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal() {
+export default function ProgramAdd() {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  const [program, setProgram] = useState({name: ''});
 
   const handleOpen = () => {
     setOpen(true);
@@ -42,31 +45,42 @@ export default function SimpleModal() {
     setOpen(false);
   };
 
+//   const handleChanges = (e) => {
+//     setProgram({...program, [e.target.name]: e.target.value})
+//     console.log('handle changes', program)
+//   };
+
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Handle Submit', program)
+
+axios
+    .post('http://localhost:3232/api/programs', program)
+    .then(res => console.log(res))
+    .catch(err => console.log('error', err))
+      setOpen(false);
+  }
+
+
+
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Edit User</h2>
-      <p id="simple-modal-description">
-      <div class="container">
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="EnterName" name="name" required/>
-    <br/>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required/>
-    <br/>
-      <button type="submit">Confirm</button>
-      <label />
-      
-    </div>
-      </p>
-      {/* <SimpleModal /> */}
+      <h2 id="simple-modal-title">Create New Program</h2>
+      <br/>
+      <label for="name"><b>Progran Name:</b></label><br/>
+      <input type="name" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({name: e.target.value})} required/>
+        <br/><br/>
+      <Button onClick={handleSubmit}>Submit!</Button>
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Edit User
-      </button>
+      <Button type="button" color="primary" onClick={handleOpen}>
+        Create New Program
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
