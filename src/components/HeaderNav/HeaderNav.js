@@ -1,4 +1,5 @@
 import React from 'react';
+import EditUser from '../EditUser/EditUser';
 
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -51,8 +52,8 @@ const HeaderNav = () => {
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}><SettingModal></SettingModal></MenuItem>
-                        <MenuItem onClick={handleClose}><SimpleModal></SimpleModal></MenuItem>
+                        <MenuItem onClick={handleClose}><SettingModal /></MenuItem>
+                        <MenuItem onClick={handleClose} ><SimpleModal /></MenuItem>
 
                     </Menu>
                     <Button variant="contained" color="primary">

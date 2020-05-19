@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -49,6 +50,9 @@ export default function SimpleModal() {
           <label for="name"><b>Name</b></label>
           <input type="text" placeholder="EnterName" name="name" required />
           <br />
+          <label for="password"><b>Password</b></label>
+          <input type="text" placeholder="Enter Password" name="password" required />
+          <br />
           <label for="email"><b>Email</b></label>
           <input type="email" placeholder="Enter Email" name="email" required />
           <br />
@@ -57,15 +61,14 @@ export default function SimpleModal() {
 
         </div>
       </p>
-      {/* <SimpleModal /> */}
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <Button variant="text" color='inherit' type="button" disableRipple onClick={handleOpen}>
         Edit User
-      </button>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

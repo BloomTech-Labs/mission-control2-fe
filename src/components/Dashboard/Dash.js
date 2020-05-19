@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderNav from '../HeaderNav/HeaderNav';
-import ProgramList from '../ProgramList/ProgramList';
+// import ProgramList from '../ProgramList/ProgramList';
+import PersonList from '../PersonsList/PersonsList';
 import { Grid } from '@material-ui/core';
 
 
@@ -11,7 +12,7 @@ function Dash() {
                <HeaderNav/>
                </Grid>
            <Grid item container>
-               <ProgramList/>
+               <PersonList/>
                
                </Grid>
        </Grid>
