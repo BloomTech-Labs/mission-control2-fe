@@ -3,21 +3,21 @@ import axios from 'axios';
 import ProgramCard from './ProgramCard';
 
 const ProgramList = () => {
-    const [data, setData] = useState([])    
+    const [data, setData] = useState([])
     useEffect(() => {
-    axios
-        .get('http://localhost:3232/api/programs/')
-        .then(res => {
-            setData(res.data)
-        })
-        .catch(err =>{console.error('Axios error', err)});
+        axios
+            .get('http://localhost:3232/api/programs/')
+            .then(res => {
+                setData(res.data)
+            })
+            .catch(err => { console.error('Axios error', err) });
     }, [])
 
     return (
         <div>
-           {data.map((data) => {
-               return <ProgramCard data={data} id={data.id} name={data.name}/>;
-           })}
+            {data.map((data) => {
+                return <ProgramCard data={data} id={data.id} name={data.name} />;
+            })}
         </div>
     )
 };

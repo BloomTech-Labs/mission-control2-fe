@@ -4,7 +4,7 @@ import { Security, SecureRoute, LoginCallback } from '@okta/okta-react'
 import Home from './Home'
 import Login from './Login'
 import Dash from '../Dashboard/Dash'
-import Protected from './Protected'
+import Register from '../registrationForm/Register'
 const AppWithRouterAccess = () => {
     const history = useHistory()
     const onAuthRequired = () => {
@@ -31,6 +31,7 @@ const AppWithRouterAccess = () => {
                 )}
             />
             <Route path='/implicit/callback' component={Dash} />
+            <Route path='/register' component={Register} />
         </Security>
     )
 }

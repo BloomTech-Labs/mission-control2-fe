@@ -3,19 +3,18 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 
-const useStyles = makeStyles (() => ({
+const useStyles = makeStyles(() => ({
     ProgramListView: {
         display: 'flex',
         margin: '5%',
         // border: '1px solid red',
         justifyContent: 'space-between'
-      },
+    },
     ProgramListData: {
         // border: '1px solid blue',
         marginLeft: '40px',
     }
 }));
-
 const ProgramCard = (data) => {
     const classes = useStyles();
     return (

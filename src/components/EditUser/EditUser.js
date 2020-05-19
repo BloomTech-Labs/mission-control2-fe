@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -46,17 +45,17 @@ export default function SimpleModal() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Edit User</h2>
       <p id="simple-modal-description">
-      <div class="container">
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="EnterName" name="name" required/>
-    <br/>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required/>
-    <br/>
-      <button type="submit">Confirm</button>
-      <label />
-      
-    </div>
+        <div class="container">
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="EnterName" name="name" required />
+          <br />
+          <label for="email"><b>Email</b></label>
+          <input type="email" placeholder="Enter Email" name="email" required />
+          <br />
+          <button type="submit">Confirm</button>
+          <label />
+
+        </div>
       </p>
       {/* <SimpleModal /> */}
     </div>
