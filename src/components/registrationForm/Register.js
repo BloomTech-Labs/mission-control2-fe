@@ -25,6 +25,8 @@ const Register = () =>{
         axios
         .post('http://localhost:3232/api/auth/register', newUser)
         .then(res => {
+            console.log('***', res.data)
+            localStorage.setItem('token', res.data.token)
             history.push(`/dashboard/${res.data.id}`)
         })
         .catch(err => console.error(err))

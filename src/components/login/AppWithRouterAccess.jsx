@@ -23,7 +23,7 @@ const AppWithRouterAccess = () => {
             pkce={true}
         >
             <Route path='/' exact={true} component={Home} />
-            <SecureRoute path='/dashboard' component={Dash} />
+            <Route path='/dashboard' component={Dash} />
             <Route
                 path='/login'
                 render={() => (
