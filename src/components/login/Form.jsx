@@ -1,50 +1,52 @@
 import React, { useState } from 'react';
-import OktaAuth from '@okta/okta-auth-js';
-import { useOktaAuth } from '@okta/okta-react';
+import axios from 'axios';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 const Form = ({ issuer }) => {
-    const { authService } = useOktaAuth();
     //TODO: comment well
-    const [sessionToken, setSessionToken] = useState();
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    const handleSubmit = (e) => {
+    const history = useHistory()
+    const [newUser, setNewUser] = useState({
+        name: '',
+        email: '',
+        password: '',
+    });
+    const handleChanges = (e) => {
+        setNewUser({
+            ...newUser, [e.target.name]: e.target.value
+        })
+    };
+    const onSubmit = (e) => {
         e.preventDefault();
-        const oktaAuth = new OktaAuth({ issuer: issuer });
-        oktaAuth.signIn({ username, password })
+        axios
+            .get('http://localhost:3232/api/auth/register', newUser)
             .then(res => {
-                const sessionToken = res.sessionToken;
-                setSessionToken(sessionToken);
-                authService.redirect({ sessionToken });
+                console.log('***', res.data)
+                localStorage.setItem('token', res.data.token)
+                history.push(`/dashboard/${res.data.id}`)
             })
-            .catch(err => console.log('Found an error', err));
+            .catch(err => console.error(err))
     };
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-    if (sessionToken) {
-        return null;
-    }
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
+        <div>
+            <form onSubmit={onSubmit}>
+                <label>
+                    Username:
         <input
-                    id="username" type="text"
-                    value={username}
-                    onChange={handleUsernameChange} />
-            </label>
-            <label>
-                Password:
+                        id="username" type="text"
+                        value={newUser.username}
+                        onChange={handleChanges} />
+                </label>
+                <label>
+                    Password:
         <input
-                    id="password" type="password"
-                    value={password}
-                    onChange={handlePasswordChange} />
-            </label>
-            <input id="submit" type="submit" value="Submit" />
-        </form>
+                        id="password" type="password"
+                        value={newUser.password}
+                        onChange={handleChanges} />
+                </label>
+                <input id="submit" type="submit" value="Submit" />
+            </form>
+            <p className='text'> Don't have a login? sign up <Link to={'register'}>here!</Link></p>
+        </div>
     );
 };
 export default Form;
