@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     //TODO: comment well
     const history = useHistory()
-    const [newUser, setNewUser] = useState({
-        name: '',
+    const [user, setUser] = useState({
         email: '',
         password: '',
     });
     const handleChanges = (e) => {
-        setNewUser({
-            ...newUser, [e.target.name]: e.target.value
+        e.preventDefault();
+        setUser({
+            ...user, [e.target.name]: e.target.value
         })
     };
     const onSubmit = (e) => {
         e.preventDefault();
         axios
-            .get('http://localhost:3232/api/auth/register', newUser)
+            .post('http://localhost:3232/api/auth/login', user)
             .then(res => {
                 console.log('***', res.data)
                 localStorage.setItem('token', res.data.token)
@@ -30,23 +30,23 @@ const Login = () => {
         <div>
             <form onSubmit={onSubmit}>
                 <label>
-                    Username:
+                    Name:
         <input
-                        id="username" type="text"
-                        value={newUser.username}
+                        name="name" type="text"
+                        value={user.name}
                         onChange={handleChanges} />
                 </label>
                 <label>
                     Password:
         <input
-                        id="password" type="password"
-                        value={newUser.password}
+                        name="password" type="password"
+                        value={user.password}
                         onChange={handleChanges} />
                 </label>
                 <input id="submit" type="submit" value="Submit" />
             </form>
-            <p className='text'> Don't have a login? sign up <Link to={'register'}>here!</Link></p>
+            <p className='text'> Don't have a login? sign up <Link to='/register'>here!</Link></p>
         </div>
-    );
+    )
 };
 export default Login;
