@@ -36,7 +36,7 @@ const logout = (e) => {
     e.preventDefault()
     console.log(props.user)
     localStorage.clear();
-    history.push('/login')
+    history.push('/register')
     
 };
     return (
