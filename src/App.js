@@ -12,7 +12,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         {/* <AppWithRouterAccess /> */}
         {/* <Route path='/' exact={true} component={Home} /> */}
-        <Route path='/dashboard' component={Dash} />
+        <Route path='/dashboard/:id' component={Dash} />
         {/* <Route
                 path='/login'
                 render={() => (

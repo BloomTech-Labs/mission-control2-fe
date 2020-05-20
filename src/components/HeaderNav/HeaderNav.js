@@ -16,9 +16,8 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const HeaderNav = () => {
+const HeaderNav = (props) => {
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -27,7 +26,7 @@ const HeaderNav = () => {
 
     const handleClose = (e) => {
         e.preventDefault()
-        console.log('hey ho')
+        setAnchorEl(false)
         return (
             <EditUser />
         )
@@ -36,7 +35,7 @@ const HeaderNav = () => {
     return (
         <AppBar position='static'>
             <Toolbar className={classes.toolbarMenu}>
-                <Typography>Mission Control: Dashboard</Typography>
+                <Typography>Mission Control: {props.user.name}'s Dashboard </Typography>
                 <div>
                     <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleClick}>
                         Menu
@@ -53,7 +52,7 @@ const HeaderNav = () => {
                     >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}><SettingModal /></MenuItem>
-                        <MenuItem onClick={handleClose} ><SimpleModal /></MenuItem>
+                        <MenuItem onClick={handleClose} ><SimpleModal user={props.user} setUser={props.setUser} /></MenuItem>
 
                     </Menu>
                     <Button variant="contained" color="primary">

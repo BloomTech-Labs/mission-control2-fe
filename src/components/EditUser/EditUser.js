@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import axios from 'axios';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -28,17 +29,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal() {
+export default function SimpleModal(props) {
+  // console.log('**** props', props)
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  // const [updateUser, setUpdateUser] = React.useState({
+  //   name: props.user.name,
+  //   email: props.user.email
+  // });
+  // console.log('**& update user', updateUser);
+
+  const handleChanges = (e) => {
+    e.preventDefault();
+    props.setUser({...props.user, [e.target.name]: e.target.value})
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("%$#%$#%$#%", props.user)
+    axios.put(`http://localhost:3232/api/persons/${props.user.id}`, props.user)
+    .then(res => console.log('*** axios put', res))
+    .catch(err => console.error(err))
+    .finally(()=>{
+      closeModal()
+    });
+  };
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const closeModal = () => {
     setOpen(false);
   };
 
@@ -46,20 +69,17 @@ export default function SimpleModal() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Edit User</h2>
       <p id="simple-modal-description">
-        <div class="container">
+        <form class="container">
           <label for="name"><b>Name</b></label>
-          <input type="text" placeholder="EnterName" name="name" required />
-          <br />
-          <label for="password"><b>Password</b></label>
-          <input type="text" placeholder="Enter Password" name="password" required />
+          <input type="text" value={props.user.name} onChange={handleChanges} name="name" required />
           <br />
           <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Email" name="email" required />
+          <input type="email" placeholder="Enter Email" value={props.user.email} onChange={handleChanges} name="email" required />
           <br />
-          <button type="submit">Confirm</button>
+          <button onClick={handleSubmit} type="submit">Confirm</button>
           <label />
 
-        </div>
+        </form>
       </p>
     </div>
   );
@@ -71,7 +91,7 @@ export default function SimpleModal() {
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={closeModal}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
