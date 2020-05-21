@@ -10,7 +10,7 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Route path='/dashboard/:id' component={Dash} />
-        <Route path='/login' render={() => (<Login />)} />
+        <Route exactPath='/' render={() => (<Login />)} />
         <Route path='/register' component={Register} />
       </ThemeProvider>
     </Router>
