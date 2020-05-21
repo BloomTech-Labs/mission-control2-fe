@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+//uses state to keep the info for the user, then sends it to the server to be made, which returns the info and allows them to go to the newly created personal dashboard
 const Register = () => {
     const history = useHistory()
     const [newUser, setNewUser] = useState({

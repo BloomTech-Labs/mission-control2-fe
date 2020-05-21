@@ -3,18 +3,20 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 const Login = () => {
-    //TODO: comment well
+    //sets state and the usehistory
     const history = useHistory()
     const [user, setUser] = useState({
         email: '',
         password: '',
     });
+    //allows you to change visuals when adding info to form
     const handleChanges = (e) => {
         e.preventDefault();
         setUser({
             ...user, [e.target.name]: e.target.value
         })
     };
+    //server call to allow you to log in
     const onSubmit = (e) => {
         e.preventDefault();
         axios
@@ -26,6 +28,7 @@ const Login = () => {
             })
             .catch(err => console.error(err))
     };
+    //form with a link to sign up
     return (
         <div>
             <form onSubmit={onSubmit}>
