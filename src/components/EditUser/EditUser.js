@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import axios from 'axios';
 //pops up a modal for you t be able to edit the user
+//first four functions are for styling
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }

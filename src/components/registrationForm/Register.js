@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-
-
 const Register = () => {
-
     const history = useHistory()
     const [newUser, setNewUser] = useState({
         name: '',
         email: '',
         password: '',
     });
-
     const handleChanges = (e) => {
         setNewUser({
             ...newUser, [e.target.name]: e.target.value
         })
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -29,7 +24,6 @@ const Register = () => {
             })
             .catch(err => console.error(err))
     };
-
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -50,7 +44,6 @@ const Register = () => {
                     onChange={handleChanges}
                 />
             </div>
-
             <div className="form-element">
                 <label>Password:</label>
                 <input
@@ -64,5 +57,4 @@ const Register = () => {
         </form>
     );
 };
-
 export default Register;
