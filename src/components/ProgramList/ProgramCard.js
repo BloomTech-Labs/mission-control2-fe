@@ -17,8 +17,12 @@ const useStyles = makeStyles(() => ({
 }));
 const ProgramCard = (data) => {
     const classes = useStyles();
+    const push = (e) => {
+        e.preventDefault()
+        console.log('got here boss!')
+    }
     return (
-        <div >
+        <div onClick={push} >
             <Grid container direction='row' className={classes.ProgramListView}>
                 <h3 className={classes.ProgramListData}>ID: {data.id}</h3>
                 <h3 className={classes.ProgramListData}>Program Name: {data.name}</h3>

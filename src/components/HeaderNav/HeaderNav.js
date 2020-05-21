@@ -36,7 +36,7 @@ const HeaderNav = (props) => {
         e.preventDefault()
         console.log(props.user)
         localStorage.clear();
-        history.push('/login')
+        history.push('/')
 
     };
 
