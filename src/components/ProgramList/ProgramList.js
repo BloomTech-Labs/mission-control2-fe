@@ -10,14 +10,15 @@ const ProgramList = () => {
         axios
             .get('http://localhost:3232/api/programs/')
             .then(res => {
-                setData(res.data)
+                console.log('well there is your problem!')
+                setData(() => res.data)
             })
             .catch(err => { console.error('Axios error', err) });
-    }, [data])
+    }, [])
 
     return (
         <div>
-            <ProgramAdd s />
+            <ProgramAdd />
             {data.map((data) => {
                 return <ProgramCard data={data} id={data.id} name={data.name} />;
             })}

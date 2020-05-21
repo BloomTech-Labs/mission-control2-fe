@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         height: '100vh',
         textAlign: 'center'
-      }
+    }
 
 }));
 
@@ -62,30 +62,30 @@ const Login = () => {
     return (
         <div>
             <div className={classes.login}>
-            <form onSubmit={onSubmit} className={classes.root} autoComplete="off">
-                <AppBar position="static" >
-                    <Typography variant="h4" className={classes.title}>
-                        Login
+                <form onSubmit={onSubmit} className={classes.root} autoComplete="off">
+                    <AppBar position="static" >
+                        <Typography variant="h4" className={classes.title}>
+                            Login
                     </Typography>
-                </AppBar>
-                <TextField
-                    name="name" type="text"
-                    label='Name'
-                    value={user.name}
-                    onChange={handleChanges} />
-                <br />
+                    </AppBar>
+                    <TextField
+                        name="name" type="text"
+                        label='Name'
+                        value={user.name}
+                        onChange={handleChanges} />
+                    <br />
 
-                <TextField
-                    name="password" type="password"
-                    label='Password'
-                    value={user.password}
-                    onChange={handleChanges} />
-                <br />
-                <Button onClick={onSubmit} variant="contained" color="primary">
-                    Submit
+                    <TextField
+                        name="password" type="password"
+                        label='Password'
+                        value={user.password}
+                        onChange={handleChanges} />
+                    <br />
+                    <Button onClick={onSubmit} variant="contained" color="primary">
+                        Submit
                     </Button>
-            <p className='text'> Don't have a login? sign up <Link to='/register'>here!</Link></p>
-            </form>
+                    <p className='text'> Don't have a login? sign up <Link to='/register'>here!</Link></p>
+                </form>
             </div>
         </div>
     )

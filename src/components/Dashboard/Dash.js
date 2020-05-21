@@ -19,7 +19,7 @@ function Dash(props) {
                 <HeaderNav user={user} setUser={setUser} />
             </Grid>
             <Grid item container>
-
+                <ProgramList />
             </Grid>
         </Grid>
     )
