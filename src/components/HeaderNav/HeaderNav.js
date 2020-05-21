@@ -1,44 +1,43 @@
 import React from 'react';
 import EditUser from '../EditUser/EditUser';
 import { useHistory } from 'react-router-dom';
-
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import SimpleModal from '../EditUser/EditUser';
-
+//makes the header nav bar
 const useStyles = makeStyles(() => ({
     toolbarMenu: {
         display: 'flex',
         justifyContent: 'space-between'
     }
 }));
-
 const HeaderNav = (props) => {
     const history = useHistory();
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
     };
 
-const handleClose = (e) => {
-    e.preventDefault()
-    setAnchorEl(false)
-    return (
-         <EditUser />
+    const handleClose = (e) => {
+        e.preventDefault()
+        setAnchorEl(false)
+        return (
+            <EditUser />
         )
     };
-const logout = (e) => {
-    e.preventDefault()
-    console.log(props.user)
-    localStorage.clear();
-    history.push('/register')
-    
-};
+    //clears out the users info so they are no longer logged in
+    const logout = (e) => {
+        e.preventDefault()
+        console.log(props.user)
+        localStorage.clear();
+        history.push('/register')
+
+    };
     return (
         <AppBar position='static'>
             <Toolbar className={classes.toolbarMenu}>
@@ -58,7 +57,6 @@ const logout = (e) => {
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleClose} ><SimpleModal user={props.user} setUser={props.setUser} /></MenuItem>
-
                     </Menu>
                     <Button onClick={logout} variant="contained" color="primary">
                         Logout
@@ -68,5 +66,4 @@ const logout = (e) => {
         </AppBar>
     )
 };
-
 export default HeaderNav;

@@ -7,20 +7,13 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Login from '../src/components/login/Login'
 const App = () => {
   return (
-
     <Router>
       <ThemeProvider theme={theme}>
-        {/* <Route path='/' exact={true} component={Home} /> */}
         <Route path='/dashboard/:id' component={Dash} />
-        <Route
-          path='/login'
-          render={() => (
-            <Login />
-          )} />
+        <Route path='/login' render={() => (<Login />)} />
         <Route path='/register' component={Register} />
       </ThemeProvider>
     </Router>
   );
 }
-
 export default App;
