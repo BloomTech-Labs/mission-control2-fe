@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     toolbarMenu: {
         display: 'flex',
+        textAlign: 'center',
         justifyContent: 'center'
     },
     root: {
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
             width: '25ch',
         },
+        appbar: {
+            alignItems: 'center',
+            textAlign: 'center',
+          }
     },
 }));
 
@@ -52,8 +57,8 @@ const Login = () => {
     //form with a link to sign up
     return (
         <div>
-            <form onSubmit={onSubmit} className={classes.root} noValidate autoComplete="off">
-                <AppBar position="static">
+            <form onSubmit={onSubmit} className={classes.root} autoComplete="off">
+                <AppBar position="static" className={classes.appbar}>
                     <Typography variant="h4" className={classes.title}>
                         Login
                     </Typography>
