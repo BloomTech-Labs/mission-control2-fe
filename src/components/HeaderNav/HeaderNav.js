@@ -30,14 +30,16 @@ const HeaderNav = (props) => {
             <EditUser />
         )
     };
+
     //clears out the users info so they are no longer logged in
     const logout = (e) => {
         e.preventDefault()
         console.log(props.user)
         localStorage.clear();
-        history.push('/register')
+        history.push('/login')
 
     };
+
     return (
         <AppBar position='static'>
             <Toolbar className={classes.toolbarMenu}>
