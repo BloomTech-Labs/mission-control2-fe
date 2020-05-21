@@ -17,12 +17,16 @@ const useStyles = makeStyles((theme) => ({
         '& > *': {
             margin: theme.spacing(1),
             width: '25ch',
-        },
-        appbar: {
-            alignItems: 'center',
-            textAlign: 'center',
-          }
+        }
     },
+    login: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        textAlign: 'center'
+      }
+
 }));
 
 const Login = () => {
@@ -57,8 +61,9 @@ const Login = () => {
     //form with a link to sign up
     return (
         <div>
+            <div className={classes.login}>
             <form onSubmit={onSubmit} className={classes.root} autoComplete="off">
-                <AppBar position="static" className={classes.appbar}>
+                <AppBar position="static" >
                     <Typography variant="h4" className={classes.title}>
                         Login
                     </Typography>
@@ -79,8 +84,9 @@ const Login = () => {
                 <Button onClick={onSubmit} variant="contained" color="primary">
                     Submit
                     </Button>
-            </form>
             <p className='text'> Don't have a login? sign up <Link to='/register'>here!</Link></p>
+            </form>
+            </div>
         </div>
     )
 };

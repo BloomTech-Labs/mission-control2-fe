@@ -17,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
             width: '25ch',
         },
     },
+    register: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        textAlign: 'center'
+      },
 }));
 //uses state to keep the info for the user, then sends it to the server to be made, which returns the info and allows them to go to the newly created personal dashboard
 const Register = () => {
@@ -44,6 +51,7 @@ const Register = () => {
             .catch(err => console.error(err))
     };
     return (
+        <div className={classes.register}>
         <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
             <AppBar position="static">
                     <Typography variant="h4" className={classes.title}>
@@ -72,6 +80,7 @@ const Register = () => {
                     Submit
                     </Button>
         </form>
+        </div>
     );
 };
 export default Register;
