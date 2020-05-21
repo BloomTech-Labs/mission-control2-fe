@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = () => {
+    const classes = useStyles();
     //sets state and the usehistory
     const history = useHistory()
     const [user, setUser] = useState({
