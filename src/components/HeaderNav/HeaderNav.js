@@ -1,12 +1,21 @@
 import React from "react";
 
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  makeStyles,
+  Button,
+  Menu,
+  MenuItem
+} from "@material-ui/core";
+// import { makeStyles } from "@material-ui/styles";
+// import Button from "@material-ui/core/Button";
+// import Menu from "@material-ui/core/Menu";
+// import MenuItem from "@material-ui/core/MenuItem";
 
-const useStyles = makeStyles(() => ({
+
+const useStyles = makeStyles((theme) => ({
   toolbarMenu: {
     display: "flex",
     justifyContent: "space-between",
@@ -30,6 +39,7 @@ const HeaderNav = () => {
     <AppBar position="static">
       <Toolbar className={classes.toolbarMenu}>
         <Typography>Mission Control: Dashboard</Typography>
+     
         <div>
           <Button
             aria-controls="simple-menu"
