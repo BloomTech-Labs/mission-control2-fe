@@ -9,6 +9,7 @@ function Dash(props) {
     useEffect(() => {
         axios.get(`http://localhost:3232/api/persons/${props.match.params.id}`)
             .then(res => {
+                console.log('***')
                 setUser(res.data)
             })
             .catch(err => console.error(err))
@@ -19,7 +20,7 @@ function Dash(props) {
                 <HeaderNav user={user} setUser={setUser} />
             </Grid>
             <Grid item container>
-
+            <ProgramList />
             </Grid>
         </Grid>
     )

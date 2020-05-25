@@ -22,7 +22,7 @@ const ProgramCard = (data) => {
         console.log('got here boss!')
     }
     return (
-        <div onClick={push} >
+        <div className={classes.cards} onClick={push} >
             <Grid container direction='row' className={classes.ProgramListView}>
                 <h3 className={classes.ProgramListData}>ID: {data.id}</h3>
                 <h3 className={classes.ProgramListData}>Program Name: {data.name}</h3>

@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProgramAdd from './ProgramAdd';
 import ProgramCard from './ProgramCard';
+import { makeStyles } from '@material-ui/styles';
 
+const useStyles = makeStyles(() => ({
+    cards: {
+        display: 'flex',
+        border: '1px solid red'
+    }
+}));
 
 const ProgramList = () => {
+    const classes = useStyles();
     const [data, setData] = useState([])
     useEffect(() => {
         axios
@@ -17,7 +25,7 @@ const ProgramList = () => {
 
     return (
         <div>
-            <ProgramAdd s />
+            <ProgramAdd />
             {data.map((data) => {
                 return <ProgramCard data={data} id={data.id} name={data.name} />;
             })}
