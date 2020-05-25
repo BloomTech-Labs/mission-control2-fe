@@ -3,22 +3,19 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import axios from 'axios';
-
+import { useHistory } from 'react-router-dom';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
-
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
-
   return {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
@@ -29,37 +26,31 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-
 export default function ProgramAdd() {
+  const history = useHistory();
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-  const [program, setProgram] = useState({name: ''});
-
+  const [program, setProgram] = useState({ name: '' });
   const handleOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
-//   const handleChanges = (e) => {
-//     setProgram({...program, [e.target.name]: e.target.value})
-//     console.log('handle changes', program)
-//   };
-
-
+  //   const handleChanges = (e) => {
+  //     setProgram({...program, [e.target.name]: e.target.value})
+  //     console.log('handle changes', program)
+  //   };
   const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log('Handle Submit', program)
-
-axios
-    .post('http://localhost:3232/api/programs', program)
-    .then(res => console.log(res))
-    .catch(err => console.log('error', err))
-      setOpen(false);
+    e.preventDefault();
+    console.log('Handle Submit', program)
+    axios
+      .post('http://localhost:3232/api/programs', program)
+      .then(res => console.log(res))
+      .catch(err => console.log('error', err))
+    setOpen(false);
   }
 
 
@@ -68,10 +59,10 @@ axios
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create New Program</h2>
-      <br/>
-      <label for="name"><b>Progran Name:</b></label><br/>
-      <input type="name" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({name: e.target.value})} required/>
-        <br/><br/>
+      <br />
+      <label for="name"><b>Progran Name:</b></label><br />
+      <input type="name" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
+      <br /><br />
       <Button onClick={handleSubmit}>Submit!</Button>
     </div>
   );
