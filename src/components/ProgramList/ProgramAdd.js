@@ -37,12 +37,6 @@ export default function ProgramAdd() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const id = localStorage.getItem('id')
-  //   const handleChanges = (e) => {
-  //     setProgram({...program, [e.target.name]: e.target.value})
-  //     console.log('handle changes', program)
-  //   };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Handle Submit', program)

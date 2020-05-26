@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import HeaderNav from '../HeaderNav/HeaderNav';
+import Nav from './Nav';
 import { Grid } from '@material-ui/core';
-import ProgramList from '../ProgramList/ProgramList';
+import List from './List';
 function Dash(props) {
     //does a axios call to get the user, then calls and changes the header to match it
     const [user, setUser] = useState({})
@@ -17,10 +17,10 @@ function Dash(props) {
     return (
         <Grid container direction='column'>
             <Grid item >
-                <HeaderNav user={user} setUser={setUser} />
+                <Nav user={user} setUser={setUser} />
             </Grid>
             <Grid item container>
-                <ProgramList />
+                <List />
             </Grid>
         </Grid>
     )

@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
         justifyContent: 'space-between'
     }
 }));
-const HeaderNav = (props) => {
+const Nav = (props) => {
     const history = useHistory();
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -68,4 +68,4 @@ const HeaderNav = (props) => {
         </AppBar>
     )
 };
-export default HeaderNav;
+export default Nav;
