@@ -17,9 +17,9 @@ const List = () => {
     //problem area
     useEffect(() => {
 
-        const id = localStorage.getItem('id')
+        const id = localStorage.getItem('ductid')
         axios
-            .get(`http://localhost:3232/api/programs`)
+            .get(`http://localhost:3232/api/products/${id}/projects`)
             .then(res => {
                 console.log('well there is your problem!')
                 setData(res.data)

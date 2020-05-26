@@ -25,6 +25,7 @@ const List = () => {
                 setData(res.data)
                 console.log(data.length)
             })
+
             .catch(err => { console.error('Axios error', err) })
             .finally(window.location.reload)
     }, [data.length])

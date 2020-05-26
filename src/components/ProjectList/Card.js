@@ -22,8 +22,7 @@ const Card = (data) => {
     return (
         <div className={classes.cards} onClick={push} >
             <Grid container direction='row' className={classes.ProgramListView}>
-                <h3 className={classes.ProgramListData}>ID: {data.id}</h3>
-                <h3 className={classes.ProgramListData}>Program Name: {data.name}</h3>
+                <h3 className={classes.ProgramListData}>Project Name: {data.name}</h3>
             </Grid>
         </div>
     )
