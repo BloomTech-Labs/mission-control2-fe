@@ -31,17 +31,31 @@ export default function ProgramAdd() {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [program, setProgram] = useState({ name: '' });
-  const [product, setProduct] = useState({ 
+  const [product, setProduct] = useState({
     name: '',
     active: true,
-    programKey: localStorage.getItem('gramid')
+    programKey: 0
   });
   const [project, setProject] = useState({
     name: '',
-    productKey: localStorage.getItem('ductid'),
+    productKey: 0,
     active: true
   });
 
+  const projectCall = () => {
+    axios.post(`http://localhost:3232/api/projects`, project)
+      .then(() => {
+        console.log('here!')
+        window.location.reload();
+      })
+  }
+  const productCall = () => {
+    axios.post(`http://localhost:3232/api/products`, product)
+      .then((res) => {
+        setProject({ ...project, productKey: res.data.id })
+        console.log(project)
+      })
+  }
   const handleOpen = () => {
     setOpen(true);
   };
@@ -53,9 +67,27 @@ export default function ProgramAdd() {
     console.log('Handle Submit', program)
     axios
       .post(`http://localhost:3232/api/programs`, program)
-      .then(res => window.location.reload())
+      .then((res) => {
+        console.log(product)
+        console.log(res.data.id)
+        return setProduct({ ...product, programKey: res.data.id })
+      })
+      .then(() => {
+        axios.post(`http://localhost:3232/api/products`, product)
+          .then((res) => {
+
+            console.log(project)
+            return setProject({ ...project, productKey: res.data.id })
+          })
+      })
+      .then(() => {
+        axios.post(`http://localhost:3232/api/projects`, project)
+          .then(() => {
+            console.log('here!')
+            window.location.reload();
+          })
+      })
       .catch(err => console.log('error', err))
-    setOpen(false);
   }
 
 
@@ -69,10 +101,10 @@ export default function ProgramAdd() {
       <input type="programName" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
       <br />
       <label for="prodectName"><b>Product Name:</b></label><br />
-      <input type="prodectName" placeholder="Enter Product Name" name="name" value={product.name} onChange={(e) => setProduct({ name: e.target.value })} required />
+      <input type="prodectName" placeholder="Enter Product Name" name="name" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} required />
       <br />
       <label for="name"><b>Project Name:</b></label><br />
-      <input type="name" placeholder="Enter Project Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
+      <input type="name" placeholder="Enter Project Name" name="name" value={project.name} onChange={(e) => setProject({ ...project, name: e.target.value })} required />
       <br /><br />
       <Button onClick={handleSubmit}>Submit!</Button>
     </div>
