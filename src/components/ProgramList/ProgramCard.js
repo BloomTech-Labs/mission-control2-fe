@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
     ProgramListView: {
@@ -14,10 +14,13 @@ const useStyles = makeStyles(() => ({
     }
 }));
 const ProgramCard = (data) => {
+
+    const history = useHistory()
     const classes = useStyles();
     const push = (e) => {
         e.preventDefault()
         console.log('got here boss!')
+        history.push(`/dashboard/${data.id}`)
     }
     return (
         <div className={classes.cards} onClick={push} >
