@@ -14,11 +14,12 @@ const useStyles = makeStyles(() => ({
 const ProgramList = () => {
     const classes = useStyles();
     const [data, setData] = useState([])
-
     //problem area
     useEffect(() => {
+
+        const id = localStorage.getItem('id')
         axios
-            .get('http://localhost:3232/api/programs/')
+            .get(`http://localhost:3232/api/programs`)
             .then(res => {
                 console.log('well there is your problem!')
                 setData(res.data)

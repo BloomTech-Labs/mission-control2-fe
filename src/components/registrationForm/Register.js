@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         height: '100vh',
         textAlign: 'center'
-      },
+    },
 }));
 //uses state to keep the info for the user, then sends it to the server to be made, which returns the info and allows them to go to the newly created personal dashboard
 const Register = () => {
@@ -46,40 +46,41 @@ const Register = () => {
             .then(res => {
                 console.log('***', res.data)
                 localStorage.setItem('token', res.data.token)
+                localStorage.setItem('id', res.data.id)
                 history.push(`/dashboard/${res.data.id}`)
             })
             .catch(err => console.error(err))
     };
     return (
         <div className={classes.register}>
-        <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
-            <AppBar position="static">
+            <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
+                <AppBar position="static">
                     <Typography variant="h4" className={classes.title}>
                         Register
                     </Typography>
                 </AppBar>
-            <TextField
+                <TextField
                     name="email" type="text"
                     label='Email'
                     value={newUser.email}
                     onChange={handleChanges} />
                 <br />
-            <TextField
+                <TextField
                     name="name" type="text"
                     label='Name'
                     value={newUser.name}
                     onChange={handleChanges} />
-                <br/>
-            <TextField
+                <br />
+                <TextField
                     name="password" type="password"
                     label='Password'
                     value={newUser.password}
                     onChange={handleChanges} />
-                <br/>
-            <Button onClick={handleSubmit} variant="contained" color="primary">
+                <br />
+                <Button onClick={handleSubmit} variant="contained" color="primary">
                     Submit
                     </Button>
-        </form>
+            </form>
         </div>
     );
 };

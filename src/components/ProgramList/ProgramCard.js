@@ -7,11 +7,9 @@ const useStyles = makeStyles(() => ({
     ProgramListView: {
         display: 'flex',
         margin: '5%',
-        // border: '1px solid red',
         justifyContent: 'space-between'
     },
     ProgramListData: {
-        // border: '1px solid blue',
         marginLeft: '40px',
     }
 }));

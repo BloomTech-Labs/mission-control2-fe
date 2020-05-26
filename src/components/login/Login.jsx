@@ -52,6 +52,7 @@ const Login = () => {
             .then(res => {
                 console.log('***', res.data)
                 localStorage.setItem('token', res.data.token)
+                localStorage.setItem('id', res.data.id)
                 history.push(`/dashboard/${res.data.id}`)
             })
             .catch(err => console.error(err))
@@ -69,9 +70,9 @@ const Login = () => {
                     </Typography>
                     </AppBar>
                     <TextField
-                        name="name" type="text"
-                        label='Name'
-                        value={user.name}
+                        name="email" type="text"
+                        label='Email'
+                        value={user.email}
                         onChange={handleChanges} />
                     <br />
 
