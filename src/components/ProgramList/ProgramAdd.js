@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function ProgramAdd() {
-  const history = useHistory();
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -48,7 +46,7 @@ export default function ProgramAdd() {
     console.log('Handle Submit', program)
     axios
       .post('http://localhost:3232/api/programs', program)
-      .then(res => console.log(res))
+      .then(res => window.location.reload())
       .catch(err => console.log('error', err))
     setOpen(false);
   }
