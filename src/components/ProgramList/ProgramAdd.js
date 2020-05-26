@@ -54,7 +54,7 @@ export default function ProgramAdd() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create New Program</h2>
       <br />
-      <label for="name"><b>Progran Name:</b></label><br />
+      <label for="name"><b>Program Name:</b></label><br />
       <input type="name" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
       <br /><br />
       <Button onClick={handleSubmit}>Submit!</Button>

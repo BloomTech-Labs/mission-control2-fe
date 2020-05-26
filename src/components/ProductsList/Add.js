@@ -30,7 +30,11 @@ export default function Add() {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const [program, setProgram] = useState({ name: '' });
+    const [program, setProgram] = useState({
+        name: '',
+        active: true,
+        programKey: localStorage.getItem('gramid')
+    });
     const handleOpen = () => {
         setOpen(true);
     };
@@ -41,7 +45,7 @@ export default function Add() {
         e.preventDefault();
         console.log('Handle Submit', program)
         axios
-            .post(`http://localhost:3232/api/programs`, program)
+            .post(`http://localhost:3232/api/products`, program)
             .then(res => window.location.reload())
             .catch(err => console.log('error', err))
         setOpen(false);
@@ -52,10 +56,10 @@ export default function Add() {
 
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Create New Program</h2>
+            <h2 id="simple-modal-title">Create New Product</h2>
             <br />
-            <label for="name"><b>Progran Name:</b></label><br />
-            <input type="name" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
+            <label for="name"><b>Product Name:</b></label><br />
+            <input type="name" placeholder="Enter Product Name" name="name" value={program.name} onChange={(e) => setProgram({ ...program, name: e.target.value })} required />
             <br /><br />
             <Button onClick={handleSubmit}>Submit!</Button>
         </div>
@@ -64,7 +68,7 @@ export default function Add() {
     return (
         <div>
             <Button type="button" color="primary" onClick={handleOpen}>
-                Create New Program
+                Create New Product
       </Button>
             <Modal
                 open={open}

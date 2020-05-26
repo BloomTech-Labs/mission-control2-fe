@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
         marginLeft: '40px',
     }
 }));
-const ProgramCard = (data) => {
+const Card = (data) => {
     const classes = useStyles();
     const push = (e) => {
         e.preventDefault()

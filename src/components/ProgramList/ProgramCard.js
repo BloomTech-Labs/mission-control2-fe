@@ -20,7 +20,8 @@ const ProgramCard = (data) => {
     const push = (e) => {
         e.preventDefault()
         console.log('got here boss!')
-        history.push(`/dashboard/${data.id}`)
+        history.push(`/program/${data.id}`)
+        localStorage.setItem('gramid', data.id)
     }
     return (
         <div className={classes.cards} onClick={push} >

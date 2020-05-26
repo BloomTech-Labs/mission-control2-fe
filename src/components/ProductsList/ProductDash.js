@@ -7,7 +7,7 @@ function Dash(props) {
     //does a axios call to get the user, then calls and changes the header to match it
     const [user, setUser] = useState({})
     useEffect(() => {
-        axios.get(`http://localhost:3232/api/persons/${props.match.params.id}`)
+        axios.get(`http://localhost:3232/api/persons/${localStorage.getItem('id')}`)
             .then(res => {
                 console.log('***')
                 setUser(res.data)
