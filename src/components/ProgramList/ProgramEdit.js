@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2, 4, 3),
     },
     editButton: {
-        marginTop: '92%',
-        marginRight: '10px'
+        marginTop: '7.5%',
+        marginRight: '275px'
     }
 }));
 const ProgramEdit = (props) => {
@@ -58,12 +58,12 @@ const ProgramEdit = (props) => {
     }
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Create New Program</h2>
-            <br />
-            <label for="programName"><b>Program Name:</b></label><br />
+            <h2 id="simple-modal-title">Edit Program</h2>
+            <br/>
+            <label for="programName"><b>Program Name:</b></label><br /><br/>
             <input type="programName" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
-            <br />
-            <Button onClick={handleSubmit}>Submit!</Button>
+            <br /><br/>
+            <Button variant="contained" color="primary" onClick={handleSubmit}>Submit!</Button>
         </div>
     );
     return (

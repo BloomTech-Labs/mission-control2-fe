@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     cards: {
         display: 'flex',
         margin: '1%',
+        paddingLeft: '15%',
         // border: '1px solid blue'
     }
 }));
@@ -33,7 +34,7 @@ const ProgramCard = (data) => {
         <List component="nav" className={classes.cards} aria-label="mailbox folders" >
             <ListItem container direction='row' onClick={push} >
                
-                <h2 className={classes.ProgramListData}>Program Name: {data.name}</h2>
+                <h2 className={classes.ProgramListData}>Program: {data.name}</h2>
 
             </ListItem>
             <ProgramDel props={data.id} />

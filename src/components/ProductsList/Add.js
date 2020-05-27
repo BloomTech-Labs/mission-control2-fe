@@ -82,7 +82,7 @@ export default function Add() {
     );
     return (
         <div>
-            <Button type="button" color="primary" onClick={handleOpen}>
+            <Button type="button" variant="outlined" color="primary" onClick={handleOpen}>
                 Create New Product
       </Button>
             <Modal

@@ -8,6 +8,12 @@ const useStyles = makeStyles(() => ({
     cards: {
         display: 'flex',
         border: '1px solid red'
+    },
+    root: {
+        border: '1px solid red',
+        padding: '2%',
+        width: '100%',
+        height: '85vh'
     }
 }));
 
@@ -31,7 +37,7 @@ const List = () => {
     }, [data.length])
 
     return (
-        <div>
+        <div className={classes.root}>
             <Add />
             {data.map((data) => {
                 return <Card data={data} id={data.id} name={data.name} />;
