@@ -100,7 +100,9 @@ export default function Add() {
       />
       <br />
       <br />
-      <Button onClick={handleSubmit}>Submit!</Button>
+      <Button variant='contained' color='primary' onClick={handleSubmit}>
+        Submit!
+      </Button>
     </div>
   )
   return (

@@ -9,6 +9,11 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     border: '1px solid red',
   },
+  root: {
+    padding: '2%',
+    width: '100%',
+    height: '85vh',
+  },
 }))
 
 const List = () => {
@@ -27,12 +32,17 @@ const List = () => {
       })
       .finally(window.location.reload)
   }, [data.length])
+}
+
+const List = () => {
+  const classes = useStyles()
+  const [data, setData] = useState([])
 
   return (
-    <div>
+    <div className={classes.root}>
       <Add />
-      {data.map((value) => {
-        return <Card data={value} id={value.id} name={value.name} />
+      {data.map((data) => {
+        return <Card data={data} id={data.id} name={data.name} />
       })}
     </div>
   )

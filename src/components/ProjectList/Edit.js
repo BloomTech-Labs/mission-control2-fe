@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  editButton: {
+    marginTop: '7.5%',
+    marginRight: '275px',
+  },
 }))
 const ProgramEdit = (props) => {
   const classes = useStyles()
@@ -34,7 +38,7 @@ const ProgramEdit = (props) => {
     name: '',
   })
   const id = props.props
-
+  console.log(props.props)
   const handleOpen = () => {
     setOpen(true)
   }
@@ -43,10 +47,12 @@ const ProgramEdit = (props) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    console.log(program)
     axios
       .put(`http://localhost:3232/api/projects/${id}`, program)
-      .then((res) => {})
+      .then((res) => {
+        console.log(res.data)
+      })
       .catch((err) => console.log('error', err))
       .finally(window.location.reload())
   }
@@ -58,6 +64,7 @@ const ProgramEdit = (props) => {
         <b>Project Name:</b>
       </label>
       <br />
+      <br />
       <input
         type='programName'
         placeholder='Enter Program Name'
@@ -67,12 +74,21 @@ const ProgramEdit = (props) => {
         required
       />
       <br />
-      <Button onClick={handleSubmit}>Submit!</Button>
+      <br />
+      <Button variant='contained' color='primary' onClick={handleSubmit}>
+        Submit!
+      </Button>
     </div>
   )
   return (
     <div>
-      <Button type='button' color='primary' onClick={handleOpen}>
+      <Button
+        className={classes.editButton}
+        type='button'
+        variant='contained'
+        color='primary'
+        onClick={handleOpen}
+      >
         Edit
       </Button>
       <Modal

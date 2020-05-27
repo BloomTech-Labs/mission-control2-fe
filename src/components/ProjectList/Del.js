@@ -24,9 +24,15 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  delButton: {
+    marginTop: '26%',
+    marginRight: '10px',
+  },
+  ynButton: {
+    marginRight: '7px',
+  },
 }))
 const ProgramDel = (props) => {
-  console.log('***DELETE***', props.props)
   const classes = useStyles()
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle)
@@ -42,22 +48,42 @@ const ProgramDel = (props) => {
     axios
       .delete(`http://localhost:3232/api/projects/${props.props}`)
       .then((res) => {
-        console.log('***HERE***', res)
+        console.log(res.data)
       })
       .catch((err) => console.log('error', err))
       .finally(window.location.reload())
   }
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id='simple-modal-title'>are you sure ?? this cannot be reversed.</h2>
-      <Button onClick={handleSubmit}>Yes</Button>
-      <Button onClick={handleClose}>No</Button>
+      <h2 id='simple-modal-title'>Are you sure ?? This cannot be undone.</h2>
+      <Button
+        className={classes.ynButton}
+        variant='contained'
+        color='primary'
+        onClick={handleSubmit}
+      >
+        Yes
+      </Button>
+      <Button
+        className={classes.ynButton}
+        variant='contained'
+        color='primary'
+        onClick={handleClose}
+      >
+        No
+      </Button>
     </div>
   )
 
   return (
     <div>
-      <Button type='button' color='primary' onClick={handleOpen}>
+      <Button
+        className={classes.delButton}
+        type='button'
+        variant='contained'
+        color='primary'
+        onClick={handleOpen}
+      >
         Delete
       </Button>
       <Modal
