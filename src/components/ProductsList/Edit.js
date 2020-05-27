@@ -54,9 +54,9 @@ const ProgramEdit = (props) => {
     }
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Create New Program</h2>
+            <h2 id="simple-modal-title">Edit Product</h2>
             <br />
-            <label for="programName"><b>Program Name:</b></label><br />
+            <label for="programName"><b>Product Name:</b></label><br />
             <input type="programName" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
             <br />
             <Button onClick={handleSubmit}>Submit!</Button>

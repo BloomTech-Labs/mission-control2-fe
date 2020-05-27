@@ -30,10 +30,15 @@ export default function Add() {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const [program, setProgram] = useState({
+    const [product, setProduct] = useState({
         name: '',
         active: true,
-        programKey: localStorage.getItem('gramid')
+        programKey: 0
+    });
+    const [project, setProject] = useState({
+        name: '',
+        productKey: 0,
+        active: true
     });
     const handleOpen = () => {
         setOpen(true);
@@ -43,28 +48,38 @@ export default function Add() {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Handle Submit', program)
-        axios
-            .post(`http://localhost:3232/api/products`, program)
-            .then(res => window.location.reload())
+        axios.post(`http://localhost:3232/api/products`, product)
+            .then((res) => {
+                const bruh = res.data.id
+                console.log(project)
+
+                const heartache = ({ ...project, productKey: bruh })
+                console.log(heartache)
+                return heartache;
+            })
+            .then(heartache => {
+                console.log(heartache)
+                axios.post(`http://localhost:3232/api/projects`, heartache)
+                    .then(res => {
+                        console.log('here!')
+                        window.location.reload()
+                    })
+            })
             .catch(err => console.log('error', err))
-        setOpen(false);
     }
-
-
-
-
     const body = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Create New Product</h2>
             <br />
-            <label for="name"><b>Product Name:</b></label><br />
-            <input type="name" placeholder="Enter Product Name" name="name" value={program.name} onChange={(e) => setProgram({ ...program, name: e.target.value })} required />
+            <label for="prodectName"><b>Product Name:</b></label><br />
+            <input type="prodectName" placeholder="Enter Product Name" name="name" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} required />
+            <br />
+            <label for="name"><b>Project Name:</b></label><br />
+            <input type="name" placeholder="Enter Project Name" name="name" value={project.name} onChange={(e) => setProject({ ...project, name: e.target.value })} required />
             <br /><br />
             <Button onClick={handleSubmit}>Submit!</Button>
         </div>
     );
-
     return (
         <div>
             <Button type="button" color="primary" onClick={handleOpen}>
