@@ -77,7 +77,7 @@ export default function Add() {
             <label for="name"><b>Project Name:</b></label><br />
             <input type="name" placeholder="Enter Project Name" name="name" value={project.name} onChange={(e) => setProject({ ...project, name: e.target.value })} required />
             <br /><br />
-            <Button onClick={handleSubmit}>Submit!</Button>
+            <Button variant="contained" color="primary" onClick={handleSubmit}>Submit!</Button>
         </div>
     );
     return (

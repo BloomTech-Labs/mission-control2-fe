@@ -26,7 +26,6 @@ const ProgramCard = (data) => {
     const classes = useStyles();
     const push = (e) => {
         e.preventDefault()
-        console.log('got here boss!')
         history.push(`/program/${data.id}`)
         localStorage.setItem('gramid', data.id)
     }

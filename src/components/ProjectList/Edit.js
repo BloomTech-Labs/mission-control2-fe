@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    editButton: {
+        marginTop: '7.5%',
+        marginRight: '275px'
+    }
 }));
 const ProgramEdit = (props) => {
     const classes = useStyles();
@@ -56,15 +60,15 @@ const ProgramEdit = (props) => {
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Edit Project</h2>
             <br />
-            <label for="programName"><b>Project Name:</b></label><br />
+            <label for="programName"><b>Project Name:</b></label><br /><br />
             <input type="programName" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
-            <br />
-            <Button onClick={handleSubmit}>Submit!</Button>
+            <br /><br />
+            <Button variant="contained" color="primary" onClick={handleSubmit}>Submit!</Button>
         </div>
     );
     return (
         <div>
-            <Button type="button" color="primary" onClick={handleOpen}>
+            <Button className={classes.editButton} type="button" variant="contained" color="primary" onClick={handleOpen}>
                 Edit
       </Button>
             <Modal
