@@ -3,7 +3,7 @@ import axios from 'axios';
 import Nav from './Nav';
 import { Grid } from '@material-ui/core';
 import List from './List';
-function Dash(props) {
+function Dash() {
     //does a axios call to get the user, then calls and changes the header to match it
     const [user, setUser] = useState({})
     useEffect(() => {

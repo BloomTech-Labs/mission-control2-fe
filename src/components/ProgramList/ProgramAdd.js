@@ -41,21 +41,6 @@ export default function ProgramAdd() {
     productKey: 0,
     active: true
   });
-
-  const projectCall = () => {
-    axios.post(`http://localhost:3232/api/projects`, project)
-      .then(() => {
-        console.log('here!')
-        window.location.reload();
-      })
-  }
-  const productCall = () => {
-    axios.post(`http://localhost:3232/api/products`, product)
-      .then((res) => {
-        setProject({ ...project, productKey: res.data.id })
-        console.log(project)
-      })
-  }
   const handleOpen = () => {
     setOpen(true);
   };
@@ -70,22 +55,29 @@ export default function ProgramAdd() {
       .then((res) => {
         console.log(product)
         console.log(res.data.id)
-        return setProduct({ ...product, programKey: res.data.id })
+        const thing = res.data.id
+        const requiem = ({ ...product, programKey: thing })
+        return requiem;
       })
-      .then(() => {
-        axios.post(`http://localhost:3232/api/products`, product)
+      .then(requiem => {
+        axios.post(`http://localhost:3232/api/products`, requiem)
           .then((res) => {
-
+            const bruh = res.data.id
             console.log(project)
-            return setProject({ ...project, productKey: res.data.id })
+
+            const heartache = ({ ...project, productKey: bruh })
+            console.log(heartache)
+            return heartache;
           })
-      })
-      .then(() => {
-        axios.post(`http://localhost:3232/api/projects`, project)
-          .then(() => {
-            console.log('here!')
-            window.location.reload();
+          .then(heartache => {
+            console.log(heartache)
+            axios.post(`http://localhost:3232/api/projects`, heartache)
+              .then(res => {
+                console.log('here!')
+                window.location.reload()
+              })
           })
+
       })
       .catch(err => console.log('error', err))
   }

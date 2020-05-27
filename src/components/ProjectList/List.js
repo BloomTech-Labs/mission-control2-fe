@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const List = () => {
-    const classes = useStyles();
     const [data, setData] = useState([])
     //problem area
     useEffect(() => {
