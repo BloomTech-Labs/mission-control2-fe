@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
     root: {
-          border: '1px solid red',
+        //   border: '1px solid red',
           padding: '2%',
           width: '100%',
           height: '85vh'
