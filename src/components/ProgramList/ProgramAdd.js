@@ -104,7 +104,7 @@ export default function ProgramAdd() {
 
   return (
     <div>
-      <Button type="button" color="primary" onClick={handleOpen}>
+      <Button type="button" color="primary" variant="outlined" onClick={handleOpen}>
         Create New Program
       </Button>
       <Modal

@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/styles';
 import ProgramAdd from './ProgramAdd';
 import ProgramCard from './ProgramCard';
 
+const useStyles = makeStyles({
+    root: {
+    //   border: '1px solid red',
+      padding: '2%',
+      width: '100%',
+      height: '85vh'
+    },
+  });
+  
+
 const ProgramList = () => {
+    const classes = useStyles();
     const [data, setData] = useState([])
     //problem area
     useEffect(() => {
@@ -17,7 +29,7 @@ const ProgramList = () => {
     }, [data.length])
 
     return (
-        <div>
+        <div className={classes.root}>
             <ProgramAdd />
             {data.map((data) => {
                 return <ProgramCard data={data} id={data.id} name={data.name} />;

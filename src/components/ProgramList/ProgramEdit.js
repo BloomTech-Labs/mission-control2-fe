@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    editButton: {
+        marginTop: '92%',
+        marginRight: '10px'
+    }
 }));
 const ProgramEdit = (props) => {
     const classes = useStyles();
@@ -64,7 +68,7 @@ const ProgramEdit = (props) => {
     );
     return (
         <div>
-            <Button type="button" color="primary" onClick={handleOpen}>
+            <Button className={classes.editButton} type="button" variant="contained" color="primary" onClick={handleOpen}>
                 Edit
       </Button>
             <Modal
