@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Del from './Del'
-
+import Edit from './Edit'
 const useStyles = makeStyles(() => ({
     ProgramListView: {
         display: 'flex',
@@ -25,6 +25,7 @@ const Card = (data) => {
                 <h3 className={classes.ProgramListData}>Project Name: {data.name}</h3>
             </Grid>
             <Del props={data.id} />
+            <Edit props={data.id} />
         </div>
     )
 };

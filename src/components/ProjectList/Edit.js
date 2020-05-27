@@ -45,7 +45,7 @@ const ProgramEdit = (props) => {
         e.preventDefault();
         console.log(program)
         axios
-            .put(`http://localhost:3232/api/programs/${id}`, program)
+            .put(`http://localhost:3232/api/projects/${id}`, program)
             .then((res) => {
                 console.log(res.data)
             })

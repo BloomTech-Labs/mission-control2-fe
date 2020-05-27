@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-router-dom';
 import ProgramDel from './ProgramDel'
+import ProgramEdit from './ProgramEdit'
 const useStyles = makeStyles(() => ({
     ProgramListView: {
         display: 'flex',
@@ -31,6 +32,7 @@ const ProgramCard = (data) => {
 
             </Grid>
             <ProgramDel props={data.id} />
+            <ProgramEdit props={data.id} />
         </div>
     )
 };
