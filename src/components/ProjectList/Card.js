@@ -30,7 +30,7 @@ const Card = (data) => {
       aria-label='mailbox folders'
     >
       <ListItem container direction='row' onClick={push}>
-        <h2 className={classes.ProgramListData}>Project Name: {data.name}</h2>
+        <h2 className='card'>Project Name: {data.name}</h2>
       </ListItem>
       <Del props={data.id} />
       <Edit props={data.id} />
