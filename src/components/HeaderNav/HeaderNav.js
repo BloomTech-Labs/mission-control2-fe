@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 const HeaderNav = (props) => {
+    // Makes Material UI usable
     const history = useHistory();
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -41,7 +42,6 @@ const HeaderNav = (props) => {
     // Returns user back to the Program Dashboard
     const toDash = (e) => {
         e.preventDefault()
-        console.log(props.user.id)
         history.push(`/dashboard/${props.user.id}`)
     };
 
