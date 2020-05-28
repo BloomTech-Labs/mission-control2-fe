@@ -5,10 +5,6 @@ import Card from './Card'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(() => ({
-    cards: {
-        display: 'flex',
-        border: '1px solid red',
-    },
     root: {
         padding: '2%',
         width: '100%',
@@ -50,5 +46,4 @@ const List = () => {
         </div>
     )
 }
-
-export default List
+export default List;

@@ -40,10 +40,17 @@ const Nav = (props) => {
 
     };
 
+    // Returns user back to the Program Dashboard
+    const toDash = (e) => {
+        e.preventDefault()
+        console.log(props.user.id)
+        history.push(`/dashboard/${props.user.id}`)
+    };
+
     return (
         <AppBar position='static'>
             <Toolbar className={classes.toolbarMenu}>
-                <Typography>Mission Control: {props.user.name}'s Dashboard </Typography>
+                <Typography onClick={toDash} >Mission Control: {props.user.name}'s Dashboard </Typography>
                 <div>
                     <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleClick}>
                         Menu
@@ -58,6 +65,7 @@ const Nav = (props) => {
                         }}
                         onClose={handleClose}
                     >
+                        <MenuItem onClick={toDash}>Home</MenuItem>
                         <MenuItem onClick={handleClose} ><SimpleModal user={props.user} setUser={props.setUser} /></MenuItem>
                     </Menu>
                     <Button onClick={logout} variant="contained" color="primary">
