@@ -38,7 +38,7 @@ const ProgramEdit = (props) => {
         name: '',
     });
     const id = props.props
-    console.log(props.props)
+    // console.log(props.props)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -47,7 +47,7 @@ const ProgramEdit = (props) => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(program)
+        // console.log(program)
         axios
             .put(`http://localhost:3232/api/programs/${id}`, program)
             .then((res) => {

@@ -4,17 +4,13 @@ import Add from './Add'
 import Card from './Card'
 import { makeStyles } from '@material-ui/styles'
 
-const useStyles = makeStyles(() => ({
-  cards: {
-    display: 'flex',
-    border: '1px solid red',
-  },
+const useStyles = makeStyles({
   root: {
     padding: '2%',
     width: '100%',
-    height: '85vh',
+    height: '85vh'
   },
-}))
+});
 
 const List = () => {
   const classes = useStyles();
@@ -33,7 +29,7 @@ const List = () => {
       })
       .finally(window.location.reload)
   }, [data.length])
-}
+
 
 
   return (
@@ -44,5 +40,5 @@ const List = () => {
       })}
     </div>
   )
-
-export default List
+}
+export default List;
