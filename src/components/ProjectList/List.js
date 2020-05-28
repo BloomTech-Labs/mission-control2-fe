@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const List = () => {
+  const classes = useStyles();
   const [data, setData] = useState([])
   //problem area
   useEffect(() => {
@@ -34,9 +35,6 @@ const List = () => {
   }, [data.length])
 }
 
-const List = () => {
-  const classes = useStyles()
-  const [data, setData] = useState([])
 
   return (
     <div className={classes.root}>
@@ -46,6 +44,5 @@ const List = () => {
       })}
     </div>
   )
-}
 
 export default List
