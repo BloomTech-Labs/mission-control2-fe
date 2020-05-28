@@ -51,7 +51,6 @@ const ProgramEdit = (props) => {
         axios
             .put(`http://localhost:3232/api/programs/${id}`, program)
             .then((res) => {
-                console.log(res.data)
             })
             .catch(err => console.log('error', err))
             .finally(window.location.reload())
@@ -59,10 +58,10 @@ const ProgramEdit = (props) => {
     const body = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Edit Program</h2>
-            <br/>
-            <label for="programName"><b>Program Name:</b></label><br /><br/>
+            <br />
+            <label for="programName"><b>Program Name:</b></label><br /><br />
             <input type="programName" placeholder="Enter Program Name" name="name" value={program.name} onChange={(e) => setProgram({ name: e.target.value })} required />
-            <br /><br/>
+            <br /><br />
             <Button variant="contained" color="primary" onClick={handleSubmit}>Submit!</Button>
         </div>
     );

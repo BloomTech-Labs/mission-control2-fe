@@ -6,13 +6,13 @@ import ProgramCard from './ProgramCard';
 
 const useStyles = makeStyles({
     root: {
-    //   border: '1px solid red',
-      padding: '2%',
-      width: '100%',
-      height: '85vh'
+        //   border: '1px solid red',
+        padding: '2%',
+        width: '100%',
+        height: '85vh'
     },
-  });
-  
+});
+
 
 const ProgramList = () => {
     const classes = useStyles();
@@ -20,9 +20,20 @@ const ProgramList = () => {
     //problem area
     useEffect(() => {
         axios
-            .get(`http://localhost:3232/api/programs`)
+            .get(`http://localhost:3232/api/persons/${localStorage.getItem('id')}/project`)
             .then(res => {
-                setData(res.data)
+                let arr = [];
+                res.data.forEach(e =>
+                    arr.push(e.programId))
+                return arr;
+            })
+            .then(arr => {
+                axios
+                    .get(`http://localhost:3232/api/programs`)
+                    .then(res => {
+                        let booty = res.data.filter(guru => arr.includes(guru.id))
+                        setData(booty)
+                    })
             })
             .catch(err => { console.error('Axios error', err) })
             .finally(window.location.reload)

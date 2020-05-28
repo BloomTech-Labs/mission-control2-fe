@@ -44,11 +44,19 @@ export default function Add() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Handle Submit', program)
-        axios
-            .post(`http://localhost:3232/api/projects`, program)
-            .then(res => window.location.reload())
-            .catch(err => console.log('error', err))
-        setOpen(false);
+        axios.post(`http://localhost:3232/api/projects`, program)
+            .then(res => {
+                const thing = res.data.id
+                return thing;
+            })
+            .then(thing => {
+                axios.post(`http://localhost:3232/api/persons/${localStorage.getItem('id')}/${thing}`)
+                    .then(e => {
+                        console.log(e.data)
+                        window.location.reload();
+                    })
+            })
+            .catch((err) => console.log('error', err))
     }
 
 

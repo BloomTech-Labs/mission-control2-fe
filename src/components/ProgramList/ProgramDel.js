@@ -48,7 +48,6 @@ const ProgramDel = (props) => {
         axios
             .delete(`http://localhost:3232/api/programs/${props.props}`)
             .then((res) => {
-                console.log(res.data)
             })
             .catch(err => console.log('error', err))
             .finally(window.location.reload())
@@ -60,7 +59,6 @@ const ProgramDel = (props) => {
             <Button className={classes.ynButton} variant="contained" color="primary" onClick={handleClose}>No</Button>
         </div>
     );
-
     return (
         <div>
             <Button className={classes.delButton} type="button" variant="contained" color="primary" onClick={handleOpen}>

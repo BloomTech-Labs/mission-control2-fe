@@ -58,13 +58,19 @@ export default function Add() {
         console.log(heartache)
         return heartache
       })
-      .then((heartache) => {
+      .then(heartache => {
         console.log(heartache)
-        axios
-          .post(`http://localhost:3232/api/projects`, heartache)
-          .then((res) => {
-            console.log('here!')
-            window.location.reload()
+        axios.post(`http://localhost:3232/api/projects`, heartache)
+          .then(res => {
+            const thing = res.data.id
+            return thing;
+          })
+          .then(thing => {
+            axios.post(`http://localhost:3232/api/persons/${localStorage.getItem('id')}/${thing}`)
+              .then(e => {
+                console.log(e.data)
+                window.location.reload();
+              })
           })
       })
       .catch((err) => console.log('error', err))

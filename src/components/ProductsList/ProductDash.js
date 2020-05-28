@@ -9,7 +9,6 @@ function Dash() {
     useEffect(() => {
         axios.get(`http://localhost:3232/api/persons/${localStorage.getItem('id')}`)
             .then(res => {
-                console.log('***')
                 setUser(res.data)
             })
             .catch(err => console.error(err))

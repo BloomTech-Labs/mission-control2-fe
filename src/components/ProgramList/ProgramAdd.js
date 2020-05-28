@@ -49,42 +49,38 @@ export default function ProgramAdd() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Handle Submit', program)
     axios
       .post(`http://localhost:3232/api/programs`, program)
       .then((res) => {
-        console.log(product)
-        console.log(res.data.id)
-        const thing = res.data.id
-        const requiem = ({ ...product, programKey: thing })
+        const requiem = ({ ...product, programKey: res.data.id })
         return requiem;
       })
       .then(requiem => {
         axios.post(`http://localhost:3232/api/products`, requiem)
           .then((res) => {
             const bruh = res.data.id
-            console.log(project)
-
             const heartache = ({ ...project, productKey: bruh })
-            console.log(heartache)
             return heartache;
           })
           .then(heartache => {
             console.log(heartache)
             axios.post(`http://localhost:3232/api/projects`, heartache)
               .then(res => {
-                console.log('here!')
-                window.location.reload()
+                const thing = res.data.id
+                return thing;
+              })
+              .then(thing => {
+                axios.post(`http://localhost:3232/api/persons/${localStorage.getItem('id')}/${thing}`)
+                  .then(e => {
+                    console.log(e.data)
+                    window.location.reload();
+                  })
               })
           })
 
       })
       .catch(err => console.log('error', err))
   }
-
-
-
-
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create New Program</h2>
@@ -101,7 +97,6 @@ export default function ProgramAdd() {
       <Button onClick={handleSubmit}>Submit!</Button>
     </div>
   );
-
   return (
     <div>
       <Button type="button" color="primary" variant="outlined" onClick={handleOpen}>
